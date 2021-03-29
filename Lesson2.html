@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 1
+
+var a = 1, b = 1, c, d;
+c = ++a; alert(c);           // 2 - Добавляет единицу к своему операнду, т.е. возвращает значение операнда с добавленной к нему единицей. a=2, c=2;
+d = b++; alert(d);           // 1 - Возвращает значение операнда перед добавлением к нему единицы, т.е. b=2, d=1;
+c = (2+ ++a); alert(c);      // 5 - Т.к. уже а=2, то ++а увеличит а на 1 и а будет равно 3 => c=(2+3)=5 с=5, при этом а=3;
+d = (2+ b++); alert(d);      // 4 - Т.к. уже b=2 то b++ увеличит b на 1, но вернет при этом начальное значение 2 => d=(2+2)=4, при этом b=3;
+alert(a);                    // 3 - Т.к. переменная а уже равно 3;
+alert(b);                    // 3 - Т.к. переменная b уже равно 3;
+
+// 2
+var a = 2;
+var x = 1 + (a *= 2);        // Выражение (a *= 2) эквивалентно a=a*2. Т.о. получается выражение x=1+(2*2), что дает x=5;
+alert(x); 
+
+// 3
+var a, b, c;
+a = +prompt("Введите любое целое число от -100 до 100");
+b = +prompt("Введите любое целое число от -100 до 100");
+
+if (a >= 0 && b >= 0 ){
+    c = a - b;
+    console.log(c);
+} else  if (a < 0 && b < 0 ){
+    c = a * b;
+    console.log(c);
+    } else if (a < 0 && b >= 0 || a >= 0 && b < 0) {
+        c = a + b;
+        console.log(c);
+    }
+    
+// 4
+
+let f = 5;
+j = ++f;
+console.log(j);
+
+
+// 5
+var a, b, c;
+a = +prompt("Введите любое целое число от 0 до 100");
+b = +prompt("Введите любое целое число от 0 до 100");
+
+function sum(a,b){
+    c = a + b;
+    return c;
+}
+sum(a,b);
+console.log(c);
+
+function subtraction(a,b){
+    c = a - b;
+    return c;
+}
+subtraction(a,b);
+console.log(c);
+
+function multiplication(a,b){
+    c = a * b;
+    return c;
+}
+multiplication(a,b);
+console.log(c);
+
+function division(a,b){
+    c = a / b;
+    return c;
+}
+division(a,b);
+console.log(c);
+
+
+// 6
+
+function mathOperation(arg1, arg2, operation) {
+
+switch(operation) {
+    case 'умножение':
+        console.log(multiplication(arg1,arg2));
+        break;
+    case 'деление':
+        console.log(division(arg1,arg2));
+        break;
+    case 'сложение':
+        console.log(sum(arg1,arg2));
+        break;
+    case 'вычитание':
+        console.log(subtraction(arg1,arg2));
+        break;
+    default:
+        console.log('Введите пожалуйста правильно название арифметической операции которую вы хотите произвести: ');
+}
+
+}
+
+var arg1, arg2, operation;
+    arg1 = +prompt("Введите любое целое число от 0 до 100");
+    arg2 = +prompt("Введите любое целое число от 0 до 100");
+    operation = prompt("Введите название арифметической операции которую вы хотите произвести");
+
+mathOperation(arg1, arg2, operation)
+    
+
+
+    </script>
+</body>
+</html>
