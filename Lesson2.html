@@ -45,9 +45,11 @@ if (a >= 0 && b >= 0 ){
 
 let f = +prompt('Введите целое число от 0 до 15');
 
+/*
 switch(f){
     case(0):
     console.log(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
+    break;
     case(1):
     console.log(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
     break;
@@ -96,39 +98,73 @@ switch(f){
     default:
         console.log('Введите целое число от 0 до 15')
 }
+*/
+
+switch(f){
+    case(0):
+    console.log(f++);
+    case(1):
+    console.log(f++);
+    case(2):
+    console.log(f++);
+    case(3):
+    console.log(f++);
+    case(4):
+    console.log(f++);
+    case(5):
+    console.log(f++);
+    case(6):
+    console.log(f++);
+    case(7):
+    console.log(f++);
+    case(8):
+    console.log(f++);
+    case(9):
+    console.log(f++);
+    case(10):
+    console.log(f++);
+    case(11):
+    console.log(f++);
+    case(12):
+    console.log(f++);
+    case(13):
+    console.log(f++);
+    case(14):
+    console.log(f++);
+    case(15):
+    console.log(f++);
+    default:
+        console.log('Введите целое число от 0 до 15')
+}
 
 
 
 // 5 Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.
 
-var a, b, c;
+var a, b;
 a = +prompt("Введите любое целое число от 0 до 100");
 b = +prompt("Введите любое целое число от 0 до 100");
 
 function sum(a,b){
-    c = a + b;
-    return c;
+    return a + b;
 }
 sum(a,b);
 console.log(c);
 
 function subtraction(a,b){
-    c = a - b;
-    return c;
+    return a - b;
 }
 subtraction(a,b);
 console.log(c);
 
 function multiplication(a,b){
-    c = a * b;
-    return c;
+    return a * b;
 }
 multiplication(a,b);
 console.log(c);
 
 function division(a,b){
-    c = a / b;
-    return c;
+    return a / b;
 }
 division(a,b);
 console.log(c);
@@ -142,16 +178,13 @@ function mathOperation(arg1, arg2, operation) {
 
 switch(operation) {
     case 'умножение':
-        console.log(multiplication(arg1,arg2));
-        break;
+        return multiplication(arg1,arg2);
     case 'деление':
-        console.log(division(arg1,arg2));
-        break;
+        return division(arg1,arg2);
     case 'сложение':
-        console.log(sum(arg1,arg2));
-        break;
+        return sum(arg1,arg2);
     case 'вычитание':
-        console.log(subtraction(arg1,arg2));
+        return subtraction(arg1,arg2);
         break;
     default:
         console.log('Введите пожалуйста правильно название арифметической операции которую вы хотите произвести: ');
