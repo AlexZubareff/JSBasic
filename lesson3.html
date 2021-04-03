@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+  /*      
+        let i = 1;
+        while (i <= 100) {
+            console.log(i);
+            i++;
+        }
+        
+*/
+
+        // Подсчет корзины
+
+        let products = ['пиджак','брюки','рубашка','носки','галстук','ремень','джемпер','кепка','толстовка','пуловер'];
+        let priseProducts = [100,200,300,400,500,300,100,500,700,1000];
+        
+         
+        // случайным образом формируем корзину из массива продуктов
+
+        let basket = [];
+	
+	    for( let i = 0; i < 5; i++){
+            let rand = Math.floor(Math.random() * products.length);
+            basket.push(rand);
+		    //basket.push(products[rand]);
+	}
+
+       console.log(basket);
+
+    //Вычисляем стоимость корзины
+
+    basket.forEach(function(currentItem){
+        let basketPrise = [];
+        let a = priseProducts[currentItem];
+        basketPrise.push(a);
+               // console.log(currentItem);
+        console.log(basketPrise);
+    });
+
+   
+        
+
+
+
+    </script>
+</body>
+</html>
