@@ -9,69 +9,67 @@
 <body>
     <script>
         'use strict';
-  /*      
-        let i = 1;
-        while (i <= 100) {
-            console.log(i);
-            i++;
+       
+// 1 С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+
+        function justNumber(a){
+        C:
+        for (i = 1; i < a; i++){
+            for (j = 2; j <i; j++){
+             if (i % j == 0){
+                 continue C;
+             }
         }
+        console.log(i);
+        }
+    }
+        justNumber(100);
         
-*/
 
-        // Подсчет корзины
+        // 2 Подсчет корзины
 
+        /*массив с товарами в корзине*/
         let cut = [
             ['пиджак',100,1],
-            ['брюки',200,1],
-            ['рубашка',300,1],
+            ['брюки',200,3],
+            ['рубашка',300,3],
             ['носки',400,1],
             ['галстук',500,1],
-            ['ремень',600,1],
+            ['ремень',600,2],
             ['джемпер',700,1],
             ['кепка',800,1]
         ];
         
-        
-         
-        // случайным образом формируем корзину из массива продуктов. В массиве получаем индексы
-        // товаров в массиве prodacts
 
-        let basket = [];
-	
-	    for( let i = 0; i < 5; i++){
-            let rand = Math.floor(Math.random() * products.length);
-            basket.push(rand);
-		    //basket.push(products[rand]);
-	}
-
-       console.log(basket);
-
-    //Вычисляем стоимость корзины
-    function countBasketPrice(cut){
-        for (let item of cut){
-            costItem += cut([1][1])*cut([1][2]);
-        }
+        /* Вычисляем стоимость корзины */
+    
+        function countBasketPrice(){
+            let costItem = 0;
+            for (let i = 0; i < cut.length; i++){
+            costItem += cut[i][1]*cut[i][2];
+           
+            }
         return costItem;
-    }
+        }
+    
+    let sumCostItem = countBasketPrice();
+    console.log(sumCostItem);
 
 
-    // basket.forEach(function(currentItem){
-    //     let basketPrise = [];
-    //     let a = priseProducts[currentItem];
-    //     basketPrise.push(a);
-    //            // console.log(currentItem);
-    //     console.log(basketPrise);
-    // });
+// 3 *Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть это должно так:
 
+for (let i = 0; i < 10; i++)
+ console.log( i );
    
-   // 4      
+ 
+   // 4      *Нарисовать пирамиду с помощью console.log, как показано на рисунке, только у вашей пирамиды должно быть 20 рядов, а не 5:
 
-//    let a = [];
-//     for(i = 0; i < 20; i++){
-//         a.push('x');
-//         let str = a.join(' ');
-//         console.log(str);
-//     }
+   let a = [];
+    for(i = 0; i < 20; i++){
+        a.push('x');
+        let str = a.join(' ');
+        console.log(str);
+    }
     </script>
 </body>
 </html>
