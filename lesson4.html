@@ -16,8 +16,8 @@
         };
 
     if (number <= 0 || number > 999) {
-
         console.log('Введите число от 1 до 999: ');
+        return objСomposition;
 
     }  else {
         
@@ -25,12 +25,15 @@
         objСomposition['Десятки'] = Math.floor(number%100/10);
         objСomposition['Еденицы'] = Math.floor(number%10);
 
-        console.log(objСomposition);
+        return objСomposition;
     }  
 
 }
 let number = +prompt("Введите число от 1 до 999");
 get(number);
+
+let objСomposition = get(number);
+    console.log(objСomposition);
 
 
 //2 
