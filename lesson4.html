@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1
+
+    function get(number){
+    
+    let objСomposition = {
+        };
+
+    if (number <= 0 || number > 999) {
+
+        console.log('Введите число от 1 до 999: ');
+
+    }  else {
+        
+        objСomposition['Сотни'] = Math.floor(number/100);
+        objСomposition['Десятки'] = Math.floor(number%100/10);
+        objСomposition['Еденицы'] = Math.floor(number%10);
+
+        console.log(objСomposition);
+    }  
+
+}
+let number = +prompt("Введите число от 1 до 999");
+get(number);
+
+
+//2 
+
+    </script>
+</body>
+</html>
