@@ -12,11 +12,11 @@
        
 // 1 С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
 
-        function justNumber(a){
+    function justNumber(a){
         C:
         for (i = 1; i < a; i++){
-            for (j = 2; j <i; j++){
-             if (i % j == 0){
+            for (j = 2; j <= Math.sqrt(i); j++){
+             if (i % j === 0){
                  continue C;
              }
         }
@@ -29,7 +29,7 @@
         // 2 Подсчет корзины
 
         /*массив с товарами в корзине*/
-        let cut = [
+        let cart = [
             ['пиджак',100,1],
             ['брюки',200,3],
             ['рубашка',300,3],
@@ -44,16 +44,25 @@
         /* Вычисляем стоимость корзины */
     
         function countBasketPrice(){
-            let costItem = 0;
-            for (let i = 0; i < cut.length; i++){
-            costItem += cut[i][1]*cut[i][2];
+            let sumCostItem = 0;
+            for (let i = 0; i < cart.length; i++){
+                sumCostItem += cart[i][1]*cart[i][2];
            
             }
-        return costItem;
+        return sumCostItem;
         }
     
-    let sumCostItem = countBasketPrice();
-    console.log(sumCostItem);
+    console.log(countBasketPrice(cart));
+
+// Более верное решение
+
+    function countBasketPrice(cart){
+        return cart.reduce(function(sumCostItem,cartItem) {
+            return sumCostItem + cartItem[1] * cartItem[2];
+        },0);
+    }
+    console.log(countBasketPrice(cart));
+
 
 
 // 3 *Вывести с помощью цикла for числа от 0 до 9, не используя тело цикла. Выглядеть это должно так:
