@@ -38,6 +38,34 @@ let objСomposition = get(number);
 
 //2 
 
+let basket = {
+    goods: [
+        {prod_id: 789,
+        prod_name:'Пиджак',
+        prod_prise:200,
+        quantity: 2,
+        },
+        {prod_id: 569,
+        prod_name:'Рубашка',
+        prod_prise:300,
+        quantity: 3,
+        },
+        {prod_id: 597,
+        prod_name:'Свитер',
+        prod_prise:500,
+        quantity: 1,
+        },
+        {prod_id: 236,
+        prod_name:'Кепка',
+        prod_prise:600,
+        quantity: 1,
+        },
+    ],
+    sumBasketPrice() {return this.goods.reduce((sumCostItem,cartItem) => sumCostItem + cartItem.prod_prise * cartItem.quantity,0);},
+};
+
+console.log(basket.sumBasketPrice())
+
     </script>
 </body>
 </html>
