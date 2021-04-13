@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="basket">
+
+    </div>
+
+    <button class="clear-btn">Очистить корзину</button>
+
+
+    <script>
+'use strict'
+
+
+const basket = {
+    clearDasketButton: null,
+    goods: [
+        {prod_id: 789,
+        prod_name:'Пиджак',
+        prod_prise:200,
+        quantity: 3,
+        },
+        {prod_id: 569,
+        prod_name:'Рубашка',
+        prod_prise:300,
+        quantity: 3,
+        },
+        {prod_id: 597,
+        prod_name:'Свитер',
+        prod_prise:500,
+        quantity: 1,
+        },
+        {prod_id: 236,
+        prod_name:'Кепка',
+        prod_prise:600,
+        quantity: 1,
+        },
+    ],
+    init(){
+        this.blokBasket = document.querySelector('.basket');
+        this.clearBasketButton = document.querySelector('.clear-btn');
+        this.clearBasketButton.addEventListener('click', () => this.clearBasket());
+        this.showString() 
+    },
+    showString() {
+        if (this.goods.length != 0) {
+            this.blokBasket.insertAdjacentHTML('beforeend', `В корзине ${this.goods.length} позиций общей стоимостью ${this.sumBasketPrice()}`);
+        } else {
+            this.blokBasket.textContent = 'Корзина пуста';
+        }
+    },
+
+    sumBasketPrice() {
+        return this.goods.reduce((sumCostItem,cartItem) => sumCostItem + cartItem.prod_prise * cartItem.quantity,0);
+    },
+
+    clearBasket() {
+        this.goods = [];
+        this.showString();
+    },
+};
+basket.init();
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
