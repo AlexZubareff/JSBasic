@@ -1,3 +1,6 @@
+'use strict'
+
+/* Объект КАТАЛОГ */
 const catalog = {
     catalogBlock: null,
     basket: null,
@@ -75,9 +78,7 @@ const catalog = {
     },
 };
 
-
-
-
+/* Объект КОРЗИНА */
 const basket = {
     basketBlock: null,
     clearBasketButton: null,
@@ -158,8 +159,7 @@ addToBasket(prod){
 
 };
 
-
-
+/* Подключение каталога и корзины */
 
 catalog.init('catalog', basket);
 basket.init('basket', 'clear-basket');
