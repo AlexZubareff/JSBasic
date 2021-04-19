@@ -30,6 +30,7 @@ const catalog = {
         this.render();
         this.addEventHandlers();
     },
+
     render(){
         if (this.getCatalogListLength() > 0) {
             this.renderCatalogList();
@@ -39,12 +40,12 @@ const catalog = {
     },
 
     addEventHandlers() {
-        this.catalogBlock.addEventListener('click', Event => this.addToBasket(Event));
+        this.catalogBlock.addEventListener('click', event => this.addToBasket(event));
     },
 
-    addToBasket(Event) {
-        if (!Event.target.classList.contains('prod_add-to-basket')) return;
-        const prod_id = +Event.target.dataset.prod_id;
+    addToBasket(event) {
+        if (!event.target.classList.contains('prod__add-to-basket')) return;
+        const prod_id = +event.target.dataset.prod_id;
         const prodToAdd = this.list.find((prod) => prod.prod_id === prod_id);
         this.basket.addToBasket(prodToAdd);
     },
@@ -64,7 +65,7 @@ const catalog = {
         return `<div class = "prod">
                 <h3>${item.prod_name}</h3>
                 <p>${item.prod_price} руб.</p>
-                <button class = "prod_add-to-basket" data-prod_id="${item.id_prod}">В корзину</button>
+                <button class = "prod__add-to-basket" data-prod_id = "${item.prod_id}">В корзину</button>
         </div>`;
     },
 
@@ -74,29 +75,87 @@ const catalog = {
     },
 };
 
+
+
+
 const basket = {
     basketBlock: null,
     clearBasketButton: null,
     goods:[],
 
     init(basketBlockClass, clearBasketButton){
-        this.basketBlock = document.querySelector('.$basketBlockClass');
-        this.clearBasketButton = document.querySelector('.$clearBasketButton');
+        this.basketBlock = document.querySelector(`.${basketBlockClass}`);
+        this.clearBasketButton = document.querySelector(`.${clearBasketButton}`);
         this.addEventHandlers();
         this.render();
     },
 
+
+
     addEventHandlers() {
         this.clearBasketButton.addEventListener('click', this.clearBasket.bind(this));
     },
+
+    
     clearBasket() {
         this.goods = [];
         this.render();
     },
 
     render() {
-        
+        if (this.getBasketListLength() > 0) {
+            this.renderBasketList();
+            this.basketBlock.insertAdjacentHTML('beforeend', `В корзине позиций: ${this.goods.length}. Общая стоимость товаров: ${this.sumBasketPrice()} руб.`);
+        } else {
+            this.renderEmptyBasket();
+        }
     },
+
+    sumBasketPrice() {
+        return this.goods.reduce((sumCostItem,basketItem) => sumCostItem + basketItem.prod_price * basketItem.quantity,0);
+    },
+
+addToBasket(prod){
+    if (prod) {
+        const findeInBasket = this.goods.find((item) => prod.prod_id === item.prod_id);
+        if (findeInBasket) {
+            findeInBasket.quantity++;
+        } else {
+            this.goods.push({...prod, quantity: 1});
+        }
+        this.render();
+    } else {
+        alert('Ошибка добавления!')
+    }
+},
+
+
+    getBasketListLength() {
+        return this.goods.length;
+    },
+
+
+    renderEmptyBasket() {
+        this.basketBlock.innerHTML = '';
+        this.basketBlock.textContent = 'Корзина пуста';
+    },
+
+    renderBasketList() {
+        this.basketBlock.innerHTML = '';
+        this.goods.forEach(item => {
+            this.basketBlock.insertAdjacentHTML('beforeend', this.renderBasketItem(item));
+        });
+    },
+
+    renderBasketItem(item) {
+        return `<div>
+                <h3>${item.prod_name}</h3>
+                <p>${item.prod_price} руб.</p>
+                <p>${item.quantity} шт.</p>
+        </div>`;
+    },
+
+
 };
 
 
