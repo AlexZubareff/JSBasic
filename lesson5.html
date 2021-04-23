@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="basket">
+
+    </div>
+
+    <button class="clear-btn">Очистить корзину</button>
+
+
+    <script>
+'use strict'
+
+const basketItem = {
+    render(good) {
+        return `<div class="good">
+                    <div><b>Наименование</b>: ${good.prod_name}</div>
+                    <div><b>Цена за шт.</b>: ${good.prod_price}</div>
+                    <div><b>Количество</b>: ${good.quantity}</div>
+                    <div><b>Стоимость</b>: ${good.quantity * good.prod_price}</div>
+                    <hr>
+                </div>`;
+    }
+}
+
+
+const basket = {
+    clearDasketButton: null,
+    blokBasket: null,
+    basketItem,
+    goods: [
+        {prod_id: 789,
+        prod_name:'Пиджак',
+        prod_price:200,
+        quantity: 3,
+        },
+        {prod_id: 569,
+        prod_name:'Рубашка',
+        prod_price:300,
+        quantity: 3,
+        },
+        {prod_id: 597,
+        prod_name:'Свитер',
+        prod_price:500,
+        quantity: 1,
+        },
+        {prod_id: 236,
+        prod_name:'Кепка',
+        prod_price:600,
+        quantity: 1,
+        },
+    ],
+    init(){
+        this.blokBasket = document.querySelector('.basket');
+        this.clearBasketButton = document.querySelector('.clear-btn');
+        this.clearBasketButton.addEventListener('click', () => this.clearBasket());
+        this.render();
+    },
+    render() {
+        if (this.goods.length) {
+            this.goods.forEach(good => {
+                this.blokBasket.insertAdjacentHTML('beforeend', this.basketItem.render(good));
+            });
+            this.blokBasket.insertAdjacentHTML('beforeend', `В корзине ${this.goods.length} позиций(а) стоимостью ${this.sumBasketPrice()}`);
+        } else {
+            this.blokBasket.textContent = 'Корзина пуста';
+        }
+    },
+
+    sumBasketPrice() {
+        return this.goods.reduce((sumCostItem,basketItem) => sumCostItem + basketItem.prod_price * basketItem.quantity,0);
+    },
+
+    clearBasket() {
+        this.goods = [];
+        this.render();
+    },
+};
+basket.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+#chessBoard
+{
+    width:160px;
+    height:160px;
+    border:1px solid black;
+    margin-top:20px;
+    margin-left:-162px;
+}
+#text
+{
+    width:160px;
+    height:20px;
+}
+
+#number
+{
+    width:20px;
+    height:160px;
+    margin-top:20px;
+    float:left;
+}
+
+div
+{
+ width:20px;
+ height:20px;
+ float:left;
+}
+
