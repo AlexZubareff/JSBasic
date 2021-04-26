@@ -23,6 +23,20 @@
     display: flex;
     justify-content: center;
 }
+
+#score {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 50px;
+    color: white;
+    background: #007b32;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+
+}
 td.cell{
     width: 20px;
     height: 20px;

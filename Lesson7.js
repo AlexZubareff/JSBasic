@@ -3,7 +3,7 @@ const settings = {
     rowsCount: 21,
     colsCount: 21,
     speed: 2,
-    winFoodCount: 50,
+    winFoodCount: 5,
 };
 
 const config = {
@@ -140,6 +140,10 @@ const snake = {
         const lastBodyPointClone = Object.assign({}, lastBodyPoint); // {...lastBodyPoint}
 
         this.body.push(lastBodyPointClone);
+
+        const score = document.getElementById('score');
+        score.textContent = this.body.length - 1;
+       
     },
 
     getNextStepHeadPoint() {
@@ -214,6 +218,7 @@ const game = {
     food,
     status,
     tickInterval: null,
+    score: 0,
 
     init(userSettings = {}) {
         this.config.init(userSettings);
@@ -232,11 +237,14 @@ const game = {
         this.reset();
     },
 
+
     reset() {
+        
         this.stop();
         this.snake.init(this.getStartSnakeBody(), 'up');
         this.food.setCoordinates(this.getRandomFreeCoordinates());
         this.render();
+        score.textContent = 0;
     },
 
     getStartSnakeBody() {
@@ -264,9 +272,11 @@ const game = {
     },
 
     play() {
+
         this.status.setPlaying();
         this.tickInterval = setInterval(() => this.tickHandler(), 1000 / this.config.getSpeed());
         this.setPlayButton('Стоп');
+        
     },
 
     stop() {
@@ -294,7 +304,6 @@ const game = {
         if (!this.canMakeStep()) {
             return this.finish();
         }
-
         if (this.food.isOnPoint(this.snake.getNextStepHeadPoint())) {
             this.snake.growUp();
             this.food.setCoordinates(this.getRandomFreeCoordinates());
@@ -378,6 +387,7 @@ const game = {
 
     render() {
         this.map.render(this.snake.getBody(), this.food.getCoordinates());
+
     }
 };
 
