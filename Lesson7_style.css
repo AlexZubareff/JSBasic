@@ -46,6 +46,9 @@ td.cell{
 .food{
     background: #00d021;
 }
+.barrier{
+    background: #090cc7;
+}
 .snakeBody{
     background: #e5e5e5;
 }
