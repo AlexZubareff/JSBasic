@@ -301,18 +301,20 @@ const game = {
     },
 
     getRandomFreeBarrierCoordinates() {
+        // for (i = 0; i <=5; i++) {
         const exclude = [this.food.getCoordinates(), ...this.snake.getBody(), this.barrier.getBarrierCoordinates()];
-
-        while (true) {
+        
+            while (true) {
             const rndPoint = {
                 x: Math.floor(Math.random() * this.config.getColsCount()),
                 y: Math.floor(Math.random() * this.config.getRowsCount()),
-            };
+             };
 
-            if (!exclude.some(exPoint => rndPoint.x === exPoint.x && rndPoint.y === exPoint.y)) {
+                if (!exclude.some(exPoint => rndPoint.x === exPoint.x && rndPoint.y === exPoint.y)) {
                 return rndPoint;
+                }
             }
-        }
+        // }
     },
 
     play() {
@@ -367,6 +369,7 @@ const game = {
         const nextHeadPoint = this.snake.getNextStepHeadPoint();
 
         return !this.snake.isOnPoint(nextHeadPoint) &&
+            !this.barrier.isOnPoint(nextHeadPoint) &&
             nextHeadPoint.x < this.config.getColsCount() &&
             nextHeadPoint.y < this.config.getRowsCount() &&
             nextHeadPoint.x >= 0 &&
